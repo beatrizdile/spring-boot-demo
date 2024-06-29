@@ -1,5 +1,6 @@
 package com.example.demo.run;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,13 +32,13 @@ public class RunController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
-    void create(@RequestBody Run run){
+    void create(@RequestBody @Valid Run run){
         runRepository.create(run);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
-    void create(@RequestBody Run runs, @PathVariable Integer id){
+    void create(@RequestBody @Valid Run runs, @PathVariable Integer id){
         runRepository.update(runs, id);
     }
 
